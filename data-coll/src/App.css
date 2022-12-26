@@ -1,0 +1,134 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.StoryViewer {
+  width: 48.625%;
+  height: 40%;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  float: left;
+  border: white;
+  border-style: solid;
+  overflow: auto;
+}
+
+.EventStates {
+  width: 48.625%;
+  height: 40%;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  overflow: auto;
+  float: left;
+  border: white;
+  border-style: solid;
+}
+
+.Questionnaire {
+  width: 48.625%;
+  height: 55%;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  float: left;
+  border: white;
+  border-style: solid;
+  overflow:auto;
+}
+
+.Questionnaire2 {
+  width: 100%;
+  height: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  overflow:auto;
+  float: left;
+  border: white;
+  border-style: solid;
+}
+
+.log {
+  height: 43vh;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom:30px;
+  overflow:auto;
+}
+
+.TreeViewer {
+  width: 48.5%;
+  height: 647px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  overflow: auto;
+  float: left;
+  border: white;
+  border-style: solid;
+}
+
+.TreeViewer2 {
+  width: 100%;
+  height: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  justify-content: center;
+  overflow:auto;
+  border: white;
+  border-style: solid;
+}
+
+
+.story {
+  width:100%;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.form {
+  border: white;
+  border-style: solid;
+  padding-right: 15px;
+}
+
+.form2 {
+  border: white;
+  border-style: solid;
+}
+
+.textBubble {
+
+  padding-left: 10px;
+  padding-right: 10px;
+}

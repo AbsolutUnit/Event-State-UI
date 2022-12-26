@@ -1,0 +1,54 @@
+#main {
+    background-color: var(--swatch-primary);
+    font-family: "Lexend Exa";
+    position: absolute;
+    width: 90%;
+    left: 5%;
+    height:95%;
+    top: 5%;
+    overflow: hidden;
+}
+
+#top-bar {
+    width: 100%;
+    height: 30%;
+    border-style: solid;
+}
+
+#bottom-bar {
+    width: 100%;
+    height: 65%;
+    border-style: solid;
+}
+
+#story-viewer {
+    vertical-align: middle;
+    height: 95%;
+    width: 50%;
+}
+
+#event-states-wrapper {
+    vertical-align: middle;
+    height: 95%;
+    width: 50%;
+}
+
+#event-states {
+    vertical-align: middle;
+    height: 100%;
+    width: 100%;
+}
+
+#question-form {
+    vertical-align: middle;
+    height: 100%;
+    width: 40%;
+}
+
+table, td, th {
+    border: 1px solid black;
+}
+
+table {
+    empty-cells: show;
+}

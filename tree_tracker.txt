@@ -1,0 +1,15 @@
+<EV: jack no coat-[5]>                               
+     └───────────────────┐                           
+           ST:: he no like spider-[none]             
+                  └─────────────┐                    
+                        <EV: spiders-[4]>            
+                                <EV: jack no coat-[5]>                              
+               ┌───────────────────────────┴──────────────────┐                     
+ ST:: he no like spider-[none]                   ST:: he no like tear-[none]        
+        └─────────────┐                                └────────────┐               
+              <EV: spiders-[4]>                               <EV: tear-[3]>        
+                                <EV: jack no coat-[5]>                              
+               ┌───────────────────────────┴──────────────────┐                     
+ ST:: he no like spider-[none]                   ST:: he no like tear-[none]        
+        └─────────────┐                                └────────────┐               
+              <EV: spiders-[4]>                               <EV: tear-[3]>        
