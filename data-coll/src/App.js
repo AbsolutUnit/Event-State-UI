@@ -22,7 +22,7 @@ const App = () => {
         <EventStates tableData={evStates}/>
         </div>
         <div>
-        <Questionnaire callBack={stateSend}/>
+        <Questionnaire callBack={stateSend} data={evStates}/>
         <TreeViewer treeData={evStates}/>
         </div>
       </header>

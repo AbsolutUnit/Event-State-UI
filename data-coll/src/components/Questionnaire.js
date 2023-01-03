@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import React, { Component, useState, useEffect } from 'react';
 import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box';
@@ -6,7 +6,7 @@ import Paper from '@mui/material/Paper';
 import { FormControl, InputLabel, OutlinedInput, InputAdornment } from '@mui/material';
 
 
-export default function Questionnaire({callBack}) {
+export default function Questionnaire({callBack, data}) {
     const [log, setLog] = React.useState([">>> Last action performed by a participant in the story :: "]);
     const [answer, setAnswer] = React.useState("");
     const [disabled, setDisabled] = React.useState(false);
@@ -20,6 +20,16 @@ export default function Questionnaire({callBack}) {
         setAnswer(
             ev.target.value
         );
+    }
+
+    const returnData = () => {
+        var textToSave = JSON.stringify(data);
+        var hiddenElement = document.createElement('a');
+
+        hiddenElement.href = 'data:attachment/text,' + encodeURI(textToSave);
+        hiddenElement.target = '_blank';
+        hiddenElement.download = 'myFile.txt';
+        hiddenElement.click();
     }
 
     useEffect(() => {
@@ -223,6 +233,7 @@ export default function Questionnaire({callBack}) {
                     label="Answer"
                 />
                 </FormControl>
+                <Button onClick={returnData}> Download Data </Button>
             </Grid>
         </Grid>
     </div>)
