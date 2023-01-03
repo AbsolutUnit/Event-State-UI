@@ -1,5 +1,6 @@
 # Instructions to Run
 
+Prerequisite: Have NPM Installed, see [here](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 1. Clone repo to directory
 2. `cd data-coll` to get into data-coll repo
 3. Run `npm install` to install all dependencies
