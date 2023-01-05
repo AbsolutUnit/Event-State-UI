@@ -46,6 +46,9 @@ export default function Questionnaire({callBack, data}) {
         // console.log(log)
     }
 
+    console.log("LINKED STATE VIEW");
+    console.log(linkStateGraph);
+
     const nextQuestion = () => {
         // console.log("QUESTION");
         // console.log(questionList[questionList.length - 1]);
@@ -59,7 +62,8 @@ export default function Questionnaire({callBack, data}) {
                     [{
                         event: currentEvent,
                         linked: [],
-                        parents: []
+                        parents: [],
+                        state: false
                     }]
                 );
                 logHelper(question);
@@ -119,7 +123,8 @@ export default function Questionnaire({callBack, data}) {
                     }), {
                         event: answer,
                         linked: [currentEvent],
-                        parents: [linkStateGraph.findIndex(x => x.event == currentEvent)]
+                        parents: [linkStateGraph.findIndex(x => x.event == currentEvent)],
+                        state: false
                     }]
                 );
                 // console.log("GOODBYE");
@@ -137,6 +142,27 @@ export default function Questionnaire({callBack, data}) {
             if (isNaN(answer) && answer != "none") {
                 var question = ">>> If it is directly mentioned in any sentence, specify it (1 or 2 ... or 5 or none) :: ";
                 logHelper(question);
+                console.log("CONNECTING STATE");
+                console.log(answer);
+                console.log("PAST EVENTS -1");
+                setLinkStateGraph(
+                    [...linkStateGraph.map(object => {
+                        if (object.event == currentEvent) {
+                            object.linked.push(answer);
+                            return object;
+                        } else if (object.event == pastEvents[pastEvents.length - 1]) {
+                            object.parents[object.parents.indexOf(linkStateGraph.findIndex(x => x.event == currentEvent))] = linkStateGraph.length;
+                            return object;
+                        } else {
+                            return object;
+                        }
+                    }), {
+                        event: answer,
+                        linked: [currentEvent, precondEvents[0]],
+                        parents: [linkStateGraph.findIndex(x => x.event == currentEvent)],
+                        state: true
+                    }]
+                );
             } else if (!isNaN(answer) || answer == "none") {
                 if (precondEvents.length == 0) {
                     var question = `>>> Apart from the events already selected for [EV: ${currentEvent}], are there any states DIRECTLY in the story that causes / enables this event ?? (y/n) ::`;
@@ -162,7 +188,7 @@ export default function Questionnaire({callBack, data}) {
         } else if (questionList[questionList.length - 1].includes('Apart')) {
             // console.log("APART HIT WHOO")
             if (answer == "y") {
-                var question = `>>> Event that DIRECTLY caused/enabled [EV: ${currentEvent}] ('none' to STOP):: `
+                var question = `>>> State that caused/enabled [EV: ${currentEvent}] ('none' to STOP):: `
                 setQuestionList(
                     [...questionList, question]
                 );
@@ -188,6 +214,57 @@ export default function Questionnaire({callBack, data}) {
                         !disabled
                     );
                 }
+            }
+        } else if (questionList[questionList.length - 1].includes('State')) {
+            if (answer == "none"){
+                if (precondEvents.length == 0 && pastEvents.length == 0) {
+                    setDisabled(
+                        !disabled
+                    );
+                } else if (precondEvents.length == 0) {
+                    var question = `>>> Event that DIRECTLY caused/enabled [EV: ${pastEvents[0]}] ('none' to STOP):: `
+                    setCurrentEvent(
+                        pastEvents[0]
+                    );
+                    setQuestionList(
+                        [...questionList, question]
+                    );
+                    setPastEvents(
+                        [...pastEvents.slice(1)]
+                    );
+                    logHelper(question);
+                } else {
+                    var question = `>>> What participant state (connecting state) as a result of [EV: ${precondEvents[0]}] causes or enables [EV: ${currentEvent}]?:: `
+                    // console.log("PRECOND");
+                    // console.log(precondEvents);
+                    setPastEvents(
+                        [...pastEvents, precondEvents[0]]
+                    );
+                    setPreCondEvents(
+                        [...precondEvents.slice(1)]
+                    );
+                    setQuestionList(
+                        [...questionList, question]
+                    );
+                    logHelper(question);
+                }
+            } else if (isNaN(answer)) {
+                setLinkStateGraph(
+                    [...linkStateGraph.map(object => {
+                        if (object.event == currentEvent) {
+                            object.linked.push(answer);
+                            return object;
+                        } else {
+                            return object;
+                        }
+                    }), {
+                        event: answer,
+                        linked: [currentEvent],
+                        parents: [linkStateGraph.findIndex(x => x.event == currentEvent)],
+                        state: true
+                    }]
+                );
+                logHelper(">>> Select the sentence where this event is mentioned (1 or 2 or ... or 5) or none :: ");
             }
         }
     }

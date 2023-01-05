@@ -23,7 +23,7 @@ export default function TreeViewer({treeData}) {
             "title": "",
             "description": element.event,
             "parents": element.parents,
-            "image": "",
+            "image": element.state ? "https://e7.pngegg.com/pngimages/387/775/png-clipart-3rd-annual-coastchella-at-belly-up-tavern-united-states-screenshot-times-new-roman-text-monochrome-thumbnail.png" : "http://typewar.com/site_media/static/img/letters/89c489be_E_big.png",
             "label": ""
         });
     });
