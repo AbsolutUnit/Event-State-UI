@@ -8,8 +8,6 @@ export default function StoryViewer({story}) {
     // Each answer should be a sentence
     // After Apart from the events it should ask for states -> states do not have connecting states
     // Fix table to have linked states and linked events (event is action and state is condition)
-    // Add connecting states as a different color node
-    // Perhaps use E and S in image to differentiate
     // Later -> Most important test on MTurk Sandbox
 
     return(

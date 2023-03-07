@@ -34,6 +34,15 @@ export default function TreeViewer({treeData}) {
 
     var config = {
         pageFitMode: PageFitMode.AutoSize,
+        autoSizeMinimum: {
+            "height": 0,
+            "width": 810
+        },
+        autoSizeMaximum: {
+            "height": 553,
+            "width": 810
+        },
+        verticalAlignment: "Middle",
         // cursorItem: 2,
         // linesWidth: 1,
         linesColor: "black",
@@ -58,7 +67,7 @@ export default function TreeViewer({treeData}) {
                     <Typography variant='h4' fontStyle="oblique" align='left'>Event State Graph</Typography>
                 </Grid>
                 <Grid item className="form2">
-                <Paper>
+                <Paper className = "graph-paper">
                     <FamDiagram centerOnCursor={true} config={config} />
                 </Paper>
                 </Grid>

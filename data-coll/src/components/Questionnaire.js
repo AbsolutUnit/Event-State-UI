@@ -32,6 +32,17 @@ export default function Questionnaire({callBack, data}) {
         hiddenElement.click();
     }
 
+    const reset = () => {
+        setLog([">>> Last action performed by a participant in the story :: "]);
+        setAnswer("");
+        setDisabled(false);
+        setCurrentEvent("");
+        setPreCondEvents([]);
+        setQuestionList([log[0]]);
+        setPastEvents([]);
+        setLinkStateGraph([]);
+    }
+
     useEffect(() => {
         callBack(linkStateGraph);
     }, [linkStateGraph]);
@@ -310,8 +321,9 @@ export default function Questionnaire({callBack, data}) {
                     label="Answer"
                 />
                 </FormControl>
-                <Button onClick={returnData}> Download Data </Button>
             </Grid>
         </Grid>
+        <Button className = "data-getter" onClick={returnData}> Download Data </Button>
+        <Button className = "reset" onClick={reset}> Reset </Button>
     </div>)
 }
